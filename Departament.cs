@@ -27,6 +27,10 @@ namespace WPF_application
             Name = _departName;
         }
 
+        /// <summary>
+        /// Переопределение ToString();
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{Name}";
