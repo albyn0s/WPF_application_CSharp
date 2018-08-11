@@ -13,3 +13,4 @@ C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\WPF_applica
 C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\WPF_application.csproj.CoreCompileInputs.cache
 C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\WPF_application.exe
 C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\WPF_application.pdb
+C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\GeneratedInternalTypeHelper.g.cs

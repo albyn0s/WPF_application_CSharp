@@ -9,20 +9,20 @@ namespace WPF_application
     /// <summary>
     /// Отдел
     /// </summary>
-    class Departament
+    class Department
     {
         /// <summary>
         /// Название отдела
         /// </summary>
         public string Name { get; set; }
 
-        public Departament() { }
+        public Department() { }
 
         /// <summary>
         /// Создание отдела
         /// </summary>
         /// <param name="_departName">Отдел</param>
-        public Departament(string _departName)
+        public Department(string _departName)
         {
             Name = _departName;
         }

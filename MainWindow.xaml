@@ -9,18 +9,76 @@
         xmlns:local="clr-namespace:WPF_application"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid HorizontalAlignment="Center" Height="410" Margin="-4,4,2,5" VerticalAlignment="Center" Width="794">
+    
+    <Window.DataContext>
+        <local:Program/>
+    </Window.DataContext>
+    
+    <Grid HorizontalAlignment="Center" Height="410" VerticalAlignment="Center" Width="800">
+        <Grid.DataContext>
+            <local:Employee/>
+        </Grid.DataContext>
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
             <RowDefinition Height="68*"/>
-            <RowDefinition Height="128*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="113*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="219*"/>
             <ColumnDefinition Width="581*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Background="#FFF7F7F7" Grid.Column="1" Grid.Row="1" BorderBrush="White" x:Name="ListEmploye"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" x:Name="ListDepartment"/>
+        <ListView Background="#FFF7F7F7" Grid.Column="1" Grid.Row="1" BorderBrush="White" x:Name="ListEmploye" SelectionChanged="ListEmploye_SelectionChanged" Loaded="ListEmploye_Loaded" ItemsSource="{Binding emp_s, Mode=TwoWay}">
+            <ListView.DataContext>
+                <local:Program/>
+            </ListView.DataContext>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Content="Добавить" Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Удалить" Grid.Column="1" HorizontalAlignment="Left" Margin="80,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="17" Margin="167,6,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="404"/>
+
+        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="226" Grid.Row="3" VerticalAlignment="Top" Width="581" Background="#FFF3F3F3" Loaded="Grid_Loaded">
+            <Grid.DataContext>
+                <local:Program/>
+            </Grid.DataContext>
+        </Grid>
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Имя :"/></TextBlock>
+        <TextBox x:Name="textBox_name" Grid.Column="1" HorizontalAlignment="Left" Height="17" Margin="78,12,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding emp_s/Name, Mode=TwoWay}" VerticalAlignment="Top" Width="120">
+            <TextBox.DataContext>
+                <local:Program/>
+            </TextBox.DataContext>
+        </TextBox>
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,42,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Фамилия :"/></TextBlock>
+        <TextBox x:Name="textBox_surname" Grid.Column="1" HorizontalAlignment="Left" Height="17" Margin="78,42,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding emp_s/SurName}" VerticalAlignment="Top" Width="120">
+            <TextBox.DataContext>
+                <local:Program/>
+            </TextBox.DataContext>
+        </TextBox>
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,75,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Возраст :"/></TextBlock>
+        <TextBox x:Name="textBox_age" Grid.Column="1" HorizontalAlignment="Left" Height="17" Margin="78,74,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding emp_s/Age}" VerticalAlignment="Top" Width="120">
+            <TextBox.DataContext>
+                <local:Program/>
+            </TextBox.DataContext>
+        </TextBox>
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,104,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Отдел "/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="textBox_depart" Grid.Column="1" HorizontalAlignment="Left" Height="17" Margin="78,104,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding dep_s/Name}" VerticalAlignment="Top" Width="120">
+            <TextBox.DataContext>
+                <local:Program/>
+            </TextBox.DataContext>
+        </TextBox>
+
     </Grid>
 
 </Window>

@@ -14,32 +14,46 @@ namespace WPF_application
         /// <summary>
         /// Имя
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
         /// <summary>
         /// Фамилия
         /// </summary>
-        public string SurName { get;  }
+        public string SurName { get; set; }
         /// <summary>
         /// Возвраст
         /// </summary>
-        public string Age { get; }
+        public int Age { get; set; }
+        /// <summary>
+        /// Номер
+        /// </summary>
+        public int Id { get; set; }
 
         /// <summary>
         /// Пустой констуртор
         /// </summary>
         public Employee() { }
         
-        
-        public Employee(string name, string surname, string age)
+        /// <summary>
+        /// Создание сотрудника
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="age">Возраст</param>
+        public Employee(string name, string surname, int age, int id)
         {
             Name = name;
             SurName = surname;
             Age = age;
+            Id = id;
         }
 
+        /// <summary>
+        /// Переопределние ToString()
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return $"{Name} {SurName} {Age}";
+            return $"{Id} {Name} {SurName} {Age}";
         }
     }
 }
