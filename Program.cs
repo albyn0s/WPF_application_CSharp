@@ -14,8 +14,8 @@ namespace WPF_application
         Employee emp;
         Department dep;
 
-        public ObservableCollection<Employee> emp_s { get; set; }
-        public ObservableCollection<Department> dep_s { get; set; }
+        public ObservableCollection<Employee> emp_s { get; private set; }
+        public ObservableCollection<Department> dep_s { get; private set; }
 
         public Program()
         {

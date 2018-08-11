@@ -22,25 +22,21 @@ namespace WPF_application
     /// </summary>
     public partial class MainWindow : Window
     {
-        Program mainClass = new Program();
+        Program vm = new Program();
+
         public MainWindow()
         {
             InitializeComponent();
+            ListEmploye.ItemsSource = vm.emp_s;
         }
 
         private void ListEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Employee emp = ListEmploye.SelectedItem as Employee;
-            Department dep = ListEmploye.SelectedItem as Department;
-            textBox_name.Text = emp.Name;
-            textBox_surname.Text = emp.SurName;
-            textBox_age.Text = Convert.ToString(emp.Age);
-            textBox_depart.Text = dep.Name;
+            
         }
 
         private void ListEmploye_Loaded(object sender, RoutedEventArgs e)
         {
-            
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
