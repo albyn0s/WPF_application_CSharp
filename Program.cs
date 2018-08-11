@@ -14,8 +14,8 @@ namespace WPF_application
         Employee emp;
         Department dep;
 
-        public ObservableCollection<Employee> emp_s { get; private set; }
-        public ObservableCollection<Department> dep_s { get; private set; }
+         public ObservableCollection<Employee> emp_s { get; private set; }
+         public ObservableCollection<Department> dep_s { get; private set; }
 
         public Program()
         {
@@ -25,8 +25,10 @@ namespace WPF_application
             for (int i = 0; i < 10; i++)
             {
                 dep_s.Add(dep = new Department($"Depart_name_{r.Next(0, 4)}"));
-                emp_s.Add(emp = new Employee($"User_{i} ", $"Surname_{i} ",r.Next(20, 30), i));
+                emp_s.Add(emp = new Employee($"User_{i} ", $"Surname_{i} ",r.Next(20, 30)));
             }
+
         }
+
     }
 }

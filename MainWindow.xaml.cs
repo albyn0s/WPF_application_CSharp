@@ -22,12 +22,21 @@ namespace WPF_application
     /// </summary>
     public partial class MainWindow : Window
     {
-        Program vm = new Program();
+        static Program vm = new Program();
 
         public MainWindow()
         {
             InitializeComponent();
-            ListEmploye.ItemsSource = vm.emp_s;
+
+            var result2 = vm.emp_s.Zip(vm.dep_s, (Employee, Department) => new
+            {
+                Name = Employee.Name,
+                SurName = Employee.SurName,
+                Age = Employee.Age,
+                DepName = Department.Name
+            });
+
+            ListEmploye.ItemsSource = result2;           
         }
 
         private void ListEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)

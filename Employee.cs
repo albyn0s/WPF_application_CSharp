@@ -24,10 +24,6 @@ namespace WPF_application
         /// Возвраст
         /// </summary>
         public int Age { get; set; }
-        /// <summary>
-        /// Номер
-        /// </summary>
-        public int Id { get; set; }
 
         /// <summary>
         /// Пустой констуртор
@@ -40,12 +36,11 @@ namespace WPF_application
         /// <param name="name">Имя</param>
         /// <param name="surname">Фамилия</param>
         /// <param name="age">Возраст</param>
-        public Employee(string name, string surname, int age, int id)
+        public Employee(string name, string surname, int age)
         {
             Name = name;
             SurName = surname;
             Age = age;
-            Id = id;
         }
 
         /// <summary>
@@ -54,7 +49,7 @@ namespace WPF_application
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{Id} {Name} {SurName} {Age}";
+            return $"{Name} {SurName} {Age}";
         }
     }
 }
