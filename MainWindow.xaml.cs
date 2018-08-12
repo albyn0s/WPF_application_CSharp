@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
-
+using WPF_application.ViewModel;
 
 namespace WPF_application
 {
@@ -22,35 +22,16 @@ namespace WPF_application
     /// </summary>
     public partial class MainWindow : Window
     {
-        static Program vm = new Program();
-
         public MainWindow()
         {
             InitializeComponent();
 
-            var result2 = vm.emp_s.Zip(vm.dep_s, (Employee, Department) => new
-            {
-                Name = Employee.Name,
-                SurName = Employee.SurName,
-                Age = Employee.Age,
-                DepName = Department.Name
-            });
-
-            ListEmploye.ItemsSource = result2;           
+            Loaded+= MainWindow_Loaded;
         }
 
-        private void ListEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            
-        }
-
-        private void ListEmploye_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            
+            DataContext = new MainWindowViewModel(); //загрузка viewModel
         }
     }
 

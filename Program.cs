@@ -7,28 +7,27 @@ using System.Collections.ObjectModel;
 
 namespace WPF_application
 {
-    class Program
-    {
-        Random r = new Random();
+    //class Program
+    //{
+    //    Random r = new Random();
 
-        Employee emp;
-        Department dep;
+    //    Employee emp;
+    //    Department dep;
 
-         public ObservableCollection<Employee> emp_s { get; private set; }
-         public ObservableCollection<Department> dep_s { get; private set; }
+    //    public ObservableCollection<Employee> emp_s { get; set; }
+    //    public ObservableCollection<Department> dep_s { get; set; }
 
-        public Program()
-        {
-            dep_s = new ObservableCollection<Department>();
-            emp_s = new ObservableCollection<Employee>();
+    //    public Program()
+    //    {
+    //        dep_s = new ObservableCollection<Department>();
+    //        emp_s = new ObservableCollection<Employee>();
 
-            for (int i = 0; i < 10; i++)
-            {
-                dep_s.Add(dep = new Department($"Depart_name_{r.Next(0, 4)}"));
-                emp_s.Add(emp = new Employee($"User_{i} ", $"Surname_{i} ",r.Next(20, 30)));
-            }
+    //        for (int i = 0; i < 10; i++)
+    //        {
+    //            dep_s.Add(dep = new Department($"Depart_name_{r.Next(0, 4)}"));
+    //            emp_s.Add(emp = new Employee($"User_{i} ", $"Surname_{i} ", r.Next(20, 30)));
+    //        }
+    //    }
 
-        }
-
-    }
+    //}
 }
