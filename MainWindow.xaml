@@ -8,7 +8,7 @@
         
         xmlns:local="clr-namespace:WPF_application"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="White" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="450" Width="800" Background="White" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
 
     <Grid HorizontalAlignment="Center" Height="410" VerticalAlignment="Center" Width="780" >
         <Grid.RowDefinitions>
@@ -30,8 +30,6 @@
                                     DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Header="Фамилия" Width="100"
                                     DisplayMemberBinding="{Binding SurName}"/>
-                    <GridViewColumn Header="Отдел" Width="100"
-                                    DisplayMemberBinding="{Binding Department_}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -150,7 +148,7 @@
             <TextBox x:Name="Getnewdep" 
                  Grid.Column="1" 
                  HorizontalAlignment="Left" 
-                 Height="16" 
+                 Height="18" 
                  Margin="70,42,0,0" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
