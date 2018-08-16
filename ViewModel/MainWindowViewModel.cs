@@ -35,19 +35,26 @@ namespace WPF_application.ViewModel
         /// </summary>
         public string newDepText
         {
-            get { return _newDepText; }
-            set { _newDepText = value;
-                OnPropertyChanged("newDepText"); //проверка на изменения
+            get => this._newDepText;
+            set
+            {
+                this._newDepText = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs
+                    (nameof(this.newDepText)));//проверка на изменения
             }
         }
+
         /// <summary>
         /// Выбранный сотрудник
         /// </summary>
         public Employee SelectedEmployee
         {
-            get { return selectedEmployee; }
-            set { selectedEmployee = value;
-                OnPropertyChanged("SelectedEmployee");//проверка на изменения
+            get => this.selectedEmployee;
+            set
+            {
+                this.selectedEmployee = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs
+                    (nameof(this.SelectedEmployee)));//проверка на изменения
             }
         }
         
@@ -56,11 +63,15 @@ namespace WPF_application.ViewModel
         /// </summary>
         public Department SelectedDepartment
         {
-            get { return selectedDepartment; }
-            set { selectedDepartment = value;
-                OnPropertyChanged("SelectedDepartment");//проверка на изменения
+            get => this.selectedDepartment;
+            set
+            {
+                this.selectedDepartment = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs
+                    (nameof(this.SelectedDepartment)));//проверка на изменения
             }
         }
+
         /// <summary>
         /// Добавить сотрудника
         /// </summary>
@@ -69,7 +80,6 @@ namespace WPF_application.ViewModel
         /// Удалить сотрудника
         /// </summary>
         public ICommand DelCommand { get; private set; }
-
         /// <summary>
         /// Добавить отдел
         /// </summary>
@@ -78,11 +88,19 @@ namespace WPF_application.ViewModel
         /// Удалить отдел
         /// </summary>
         public ICommand DelCommandD { get; private set; }
-
         /// <summary>
         /// Сохранить
         /// </summary>
         public ICommand DepToEmployee { get; private set; }
+
+        public void getCommands()
+        {
+            AddCommandD = new DelegateCommand(Adddep); //Добавить отдел
+            DelCommandD = new DelegateCommand(Deldep, CanRemoveDep); //удалить отдел
+            DepToEmployee = new DelegateCommand(SaveDep); //Сохранить
+            AddCommand = new DelegateCommand(AddEmployee); //Добавить сотрудника
+            DelCommand = new DelegateCommand(DelEmployee, CanRemoveEmployee); //Удалить сотрудника
+        }
 
         /// <summary>
         /// Создание коллекций и команд.
@@ -91,15 +109,7 @@ namespace WPF_application.ViewModel
         {
             employees = new ObservableCollection<Employee>(Employee.GetEmployees()); //Создаем коллекцию сотрудников.
             departaments = new ObservableCollection<Department>(Department.GetDepartments());//Создаем коллекцию отделов.
-
-            AddCommandD = new DelegateCommand(Adddep); //Добавить отдел
-            DelCommandD = new DelegateCommand(Deldep, CanRemoveDep); //удалить отдел
-
-            DepToEmployee = new DelegateCommand(SaveDep); //Сохранить
-
-            AddCommand = new DelegateCommand(AddEmployee); //Добавить сотрудника
-            DelCommand = new DelegateCommand(DelEmployee, CanRemoveEmployee); //Удалить сотрудника
-
+            getCommands();
         }
 
         /// <summary>
@@ -171,14 +181,5 @@ namespace WPF_application.ViewModel
         /// Событие на изменение
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Проверка на изменение
-        /// </summary>
-        /// <param name="propertyName">Переданная переменная/объект</param>
-        void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

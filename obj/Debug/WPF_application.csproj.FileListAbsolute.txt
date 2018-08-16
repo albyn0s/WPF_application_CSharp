@@ -13,3 +13,6 @@ C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\WPF_applica
 C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\MainWindow.g.cs
 C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\MainWindow.baml
 C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\WPF_application.csprojAssemblyReference.cache
+C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\EditWindow.g.cs
+C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\EditWindow.baml
+C:\Users\dmitry\Desktop\GB\WPF_application\WPF_application\obj\Debug\GeneratedInternalTypeHelper.g.cs

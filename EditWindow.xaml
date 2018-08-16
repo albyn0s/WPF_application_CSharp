@@ -1,0 +1,20 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_application"
+        xmlns:ViewModel="clr-namespace:WPF_application.ViewModel" x:Class="WPF_application.EditWindow"
+        mc:Ignorable="d"
+        Title="EditWindow" Height="200" Width="300" Closed="Window_Closed" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FF343434">
+    <Grid x:Name="editWindowList" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBox x:Name="textBox_name" Text="{Binding Name, UpdateSourceTrigger=Explicit}" Margin="94,20,0,123" Width="128" HorizontalAlignment="Left"/>
+        <TextBox x:Name="textBox_surname" Text="{Binding SurName, UpdateSourceTrigger=Explicit}" Margin="94,56,0,88" Width="128" HorizontalAlignment="Left"/>
+        <TextBox x:Name="textBox_age" Text="{Binding Age, UpdateSourceTrigger=Explicit}" Margin="94,89,0,53" Width="128" HorizontalAlignment="Left"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,23,0,0" TextWrapping="Wrap" Text="Имя :" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,59,0,0" TextWrapping="Wrap" Text="Фамилия :" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="28,94,0,0" TextWrapping="Wrap" Text="Возраст :" VerticalAlignment="Top"/>
+        <Button x:Name="Сохранить" HorizontalAlignment="Left" Margin="78,126,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click" Height="24" Content="Сохранить"/>
+
+    </Grid>
+</Window>

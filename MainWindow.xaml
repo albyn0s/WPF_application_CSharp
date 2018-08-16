@@ -8,160 +8,158 @@
         
         xmlns:local="clr-namespace:WPF_application"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Background="White" WindowStartupLocation="CenterScreen">
 
-
-    <Grid HorizontalAlignment="Center" Height="410" VerticalAlignment="Center" Width="800">
+    <Grid HorizontalAlignment="Center" Height="410" VerticalAlignment="Center" Width="780" >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="70*"/>
             <RowDefinition Height="15*"/>
             <RowDefinition Height="113*"/>
         </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="219*"/>
-            <ColumnDefinition Width="581*"/>
+            <ColumnDefinition Width="240*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!-- Основной список сотрудников, где источником выступает список сотрудников из ViewModel -->
-            <ListView ItemsSource="{Binding Path=employees}" SelectedItem="{Binding Path=SelectedEmployee, Mode=TwoWay}" Grid.Row="1" Grid.Column="1">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <!-- Вывожу только Имя сотрудника -->
-                        <TextBlock Text="{Binding Name}" Margin="0"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+        <ListView x:Name="employeeList" ItemsSource="{Binding Path=employees}" SelectedItem="{Binding Path=SelectedEmployee, Mode=OneWayToSource}" Grid.Row="1" MouseDoubleClick="employeeList_MouseDoubleClick" Foreground="Black" BorderBrush="{x:Null}" Background="#FFEAEAEA">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя" Width="100"
+                                    DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Фамилия" Width="100"
+                                    DisplayMemberBinding="{Binding SurName}"/>
+                    <GridViewColumn Header="Отдел" Width="100"
+                                    DisplayMemberBinding="{Binding Department_}"/>
+                </GridView>
+            </ListView.View>
         </ListView>
 
         <Button Content="Добавить" 
-                Grid.Column="1" 
                 HorizontalAlignment="Left" 
                 Margin="0,5,0,0" 
                 Grid.Row="2" 
                 VerticalAlignment="Top" 
-                Width="75" 
-                Command="{Binding Path=AddCommand}"/> <!-- Добавить сотрудника -->
+                Width="74" 
+                Command="{Binding Path=AddCommand}" Height="20"/>
+        <!-- Добавить сотрудника -->
 
-        <Button Content="Удалить" 
-                Grid.Column="1"
+        <Button Content="Удалить"
                 HorizontalAlignment="Left" 
                 Margin="80,5,0,0" 
                 Grid.Row="2" 
                 VerticalAlignment="Top" 
-                Width="75" 
+                Width="74" 
                 Command="{Binding Path=DelCommand}" 
-                CommandParameter="{Binding Path=SelectedEmployee}"/>  <!-- Удалить выбранного сотрудника -->
+                CommandParameter="{Binding Path=SelectedEmployee}" Height="20"/>
+        <!-- Удалить выбранного сотрудника -->
 
-        <TextBox Grid.Column="1" 
-                 HorizontalAlignment="Left" 
+        <TextBox HorizontalAlignment="Left" 
                  Height="20" 
-                 Margin="249,5,0,0"
+                 Margin="268,5,0,0"
                  Grid.Row="2"
                  TextWrapping="Wrap" 
                  Text="Недофильтр(не доделал)" 
                  VerticalAlignment="Top" 
-                 Width="323"/> <!-- Без комментариев -->
+                 Width="512"/>
+        <!-- Без комментариев -->
 
         <Button Content="Сохранить" 
-                Grid.Column="1" 
                 HorizontalAlignment="Left" 
                 Margin="160,5,0,0" 
                 Grid.Row="2" 
                 VerticalAlignment="Top" 
                 Width="84" 
-                Command="{Binding Path=DepToEmployee}"/> <!-- Сохранить -->
+                Command="{Binding Path=DepToEmployee}" Height="20"/>
+        <!-- Сохранить -->
 
-
-        <Grid x:Name="dbs" Grid.Column="1" HorizontalAlignment="Left" Height="226" Grid.Row="3" VerticalAlignment="Top" Width="571" Background="#FFF3F3F3" >
+        <Grid x:Name="dbs" HorizontalAlignment="Left" Height="234" Grid.Row="3" VerticalAlignment="Top" Width="780" Background="#FFE8E8E8" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="314*"/>
-                <ColumnDefinition Width="257*"/>
+                <ColumnDefinition Width="233*"/>
+                <ColumnDefinition Width="547*"/>
             </Grid.ColumnDefinitions>
-            
+
             <ComboBox x:Name="depName" 
                       ItemsSource="{Binding Path=departaments}" 
                       Text="{Binding Path=SelectedEmployee.Department_, 
                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                       SelectedItem="{Binding Path=SelectedDepartment, Mode=TwoWay}" 
                       HorizontalAlignment="Left" 
-                      Margin="33.333,10,0,0" 
+                      Margin="70,10,0,0" 
                       VerticalAlignment="Top" 
                       Width="120" 
-                      Grid.Column="1"/><!-- Список отделов, выбранный сотрудник отображает его отдел, а также выделяется выбранный отдел -->
+                      Grid.Column="1" Height="22"/>
+            <!-- Список отделов, выбранный сотрудник отображает его отдел, а также выделяется выбранный отдел -->
 
             <Button Content="-" 
                     HorizontalAlignment="Left" 
-                    Margin="172.333,12,0,0" 
+                    Margin="209,13,0,0" 
                     VerticalAlignment="Top" 
-                    Width="24" 
+                    Width="19" 
                     Command="{Binding Path=DelCommandD}" 
                     CommandParameter="{Binding Path=SelectedDepartment, 
                 UpdateSourceTrigger=PropertyChanged}" 
-                    Grid.Column="1"/>  <!-- Удаляет выбранный отдел -->
+                    Grid.Column="1" Height="16"/>
+            <!-- Удаляет выбранный отдел -->
 
             <Button Content="+" 
                     HorizontalAlignment="Left" 
-                    Margin="172.333,47,0,0" 
+                    Margin="209,42,0,0" 
                     VerticalAlignment="Top" 
-                    Width="24" 
+                    Width="19" 
                     Command="{Binding Path=AddCommandD}" 
                     CommandParameter="{Binding Path=SelectedDepartment, 
                 UpdateSourceTrigger=PropertyChanged}" 
-                    Grid.Column="1"/>  <!-- Добавляет отдел из TextBox -->
-        </Grid>
+                    Grid.Column="1" Height="16"/>
+            <!-- Добавляет отдел из TextBox -->
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Имя :"/></TextBlock>
-        <TextBox x:Name="textBox_name" 
-                 Grid.Column="1" 
+            <TextBlock HorizontalAlignment="Left" Margin="19,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="29" Foreground="Black"><Run Text="Имя :"/></TextBlock>
+            <TextBlock x:Name="textBox_name" 
                  HorizontalAlignment="Left" 
                  Height="17" 
-                 Margin="78,12,0,0" 
-                 Grid.Row="3" 
+                 Margin="94,13,0,0" 
                  TextWrapping="Wrap" 
                  Text="{Binding Path=SelectedEmployee.Name, 
             UpdateSourceTrigger=PropertyChanged}" 
-                 VerticalAlignment="Top" Width="120"/> <!-- Блок с именем и передаваемым значением по сотруднику -->
+                 VerticalAlignment="Top" Width="120" Foreground="Black"/>
+            <!-- Блок с именем и передаваемым значением по сотруднику -->
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,42,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Фамилия :"/></TextBlock>
-        <TextBox x:Name="textBox_surname" 
-                 Grid.Column="1" 
+            <TextBlock HorizontalAlignment="Left" Margin="19,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="55" Foreground="Black"><Run Text="Фамилия :"/></TextBlock>
+            <TextBlock x:Name="textBox_surname" 
                  HorizontalAlignment="Left" 
                  Height="17" 
-                 Margin="78,42,0,0" 
-                 Grid.Row="3" 
+                 Margin="94,43,0,0" 
                  TextWrapping="Wrap" 
                  Text="{Binding Path=SelectedEmployee.SurName, 
             UpdateSourceTrigger=PropertyChanged}" 
                  VerticalAlignment="Top" 
-                 Width="120"/>  <!-- Блок с фамилией и передаваемым значением по сотруднику -->
+                 Width="120" Foreground="Black"/>
+            <!-- Блок с фамилией и передаваемым значением по сотруднику -->
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,75,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Возраст :"/></TextBlock>
-        <TextBox x:Name="textBox_age" 
-                 Grid.Column="1" 
-                 HorizontalAlignment="Left" 
+            <TextBlock HorizontalAlignment="Left" Margin="19,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="49" Foreground="Black"><Run Text="Возраст :"/></TextBlock>
+            <TextBlock x:Name="textBox_age" 
                  Height="17" 
-                 Margin="78,74,0,0" 
-                 Grid.Row="3" 
-                 TextWrapping="Wrap" 
+                 Margin="94,75,19,142" 
                  Text="{Binding Path=SelectedEmployee.Age, 
             UpdateSourceTrigger=PropertyChanged}" 
-                 VerticalAlignment="Top" 
-                 Width="120"/>  <!-- Блок с возрастом и передаваемым значением по сотруднику -->
+                 Width="120" Foreground="Black"/>
+            <!-- Блок с возрастом и передаваемым значением по сотруднику -->
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="295,13,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Отдел "/><Run Text=":"/></TextBlock>
-        <TextBox x:Name="Getnewdep" 
+            <TextBlock HorizontalAlignment="Left" Margin="26,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="39" Grid.Column="1" Foreground="Black"><Run Text="Отдел "/><Run Text=":"/></TextBlock>
+            <TextBox x:Name="Getnewdep" 
                  Grid.Column="1" 
                  HorizontalAlignment="Left" 
-                 Height="23" 
-                 Margin="347,45,0,0" 
-                 Grid.Row="3" 
+                 Height="16" 
+                 Margin="70,42,0,0" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
                  Width="120" 
                  Text="{Binding Path=newDepText, Mode=TwoWay, 
-            UpdateSourceTrigger=PropertyChanged}"/>  <!--Блок для нового названия отдела-->
+            UpdateSourceTrigger=PropertyChanged}"/>
+            <!--Блок для нового названия отдела-->
+        </Grid>
     </Grid>
+
 
 </Window>

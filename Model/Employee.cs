@@ -86,7 +86,7 @@ namespace WPF_application
                 new Employee() { Name = $"User_name_0", SurName = $"SurName_0", Age = r.Next(20, 30) },
                 new Employee() { Name = $"User_name_1", SurName = $"SurName_1", Age = r.Next(20, 30) },
                 new Employee() { Name = $"User_name_2", SurName = $"SurName_2", Age = r.Next(20, 30) },
-                new Employee() { Name = $"User_name_3", SurName = $"SurName_3", Age = r.Next(20, 30) },
+                new Employee() { Name = $"User_name_3", SurName = $"SurName_3", Age = r.Next(20, 30) }
             };
             return result;
         }

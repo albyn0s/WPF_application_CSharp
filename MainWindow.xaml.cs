@@ -33,6 +33,11 @@ namespace WPF_application
         {
             DataContext = new MainWindowViewModel(); //загрузка viewModel
         }
+
+        private void employeeList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            new EditWindow(employeeList.SelectedItem as Employee).ShowDialog();
+        }
     }
 
 
